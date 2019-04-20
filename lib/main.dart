@@ -45,7 +45,16 @@ class RandomWordsState extends State<RandomWords> {
       trailing: Icon(   // Add the lines from here...
         alreadySaved ? Icons.favorite : Icons.favorite_border,
         color: alreadySaved ? Colors.red : null,
-      ),                // ... to here.
+      ),
+      onTap: () {
+        setState(() { // setState triggers a call to the build to update the UI
+          if (alreadySaved) {
+            _saved.remove(pair);
+          } else {
+            _saved.add(pair);
+          }
+        });
+      },
     );
   }
   @override
